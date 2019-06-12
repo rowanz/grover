@@ -39,13 +39,13 @@ curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-
 Then `pip install -r requirements-gpu.txt` if you're installing on a GPU, or `pip install requirements-tpu.txt` for TPU.
 
 Misc notes/tips:
-* If you have a lot of projects on your machine, you might want to use an anaconda environment to handle them all. Use `conda create -n grover python=3.6` to create an environment named `grover`.
-* I'm using tensorflow `1.13.1` which requires Cuda `10.0`. You'll need to install that from the nvidia website. I usually install it into `/usr/local/cuda-10.0/`, so you will need to run `export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64` so tensorflow knows where to find it.
+* If you have a lot of projects on your machine, you might want to use an anaconda environment to handle them all. Use `conda create -n grover python=3.6` to create an environment named `grover`. To enter the environment use `source activate grover`. To leave use `source deactivate`.
+* I'm using tensorflow `1.13.1` which requires Cuda `10.0`. You'll need to install that from the nvidia website. I usually install it into `/usr/local/cuda-10.0/`, so you will need to run `export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64` so tensorflow knows where to find it. 
 * I always have my pythonpath as the root directory. While in the `grover` directory, run `export PYTHONPATH=$(pwd)` to set it.
 
 ## Quickstart: setting up Grover for generation!
 
-1. Set up your environment.
+1. Set up your environment. Here's the easy way, assuming anaconda is installed: `conda create -y -n grover python=3.6 && source activate grover && pip install -r requirements-gpu.txt`
 2. Download the model using `python download_model.py base`
 3. Now generate: `PYTHONPATH=$(pwd) python sample/contextual_generate.py -model_config_fn lm/configs/base.json -model_ckpt models/base/model.ckpt -metadata_fn sample/april2019_set_mini.jsonl -out_fn april2019_set_mini_out.jsonl`
 

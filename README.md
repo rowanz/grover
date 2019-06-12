@@ -1,5 +1,5 @@
 # Grover
-## (aka, code for Defending Against Neural Fake News)
+(aka, code for [Defending Against Neural Fake News](https://arxiv.org/abs/1905.12616))
 
 Grover is a model for Neural Fake News -- both generation and detection. However, it probably can also be used for other generation tasks. 
 
@@ -14,6 +14,8 @@ We are releasing the following:
 * Code for the Grover discriminator in [discrimination/](discrimination/). Without much changing, you can run Grover as a discriminator to detect Neural Fake News.
 * Code for generating from a Grover model, in [sample/](sample/).
 * Code for making your own RealNews dataset in [realnews/](realnews/).
+
+Scroll down 👇 for some easy-to-use instructions for setting up Grover to generate news articles.
 
 ## Setting up your environment
 

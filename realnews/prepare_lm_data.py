@@ -80,8 +80,6 @@ class S3TFRecordWriter(object):
             import boto3
             self.gclient = None
             self.s3client = boto3.client('s3',
-                                         aws_access_key_id='AKIASQPN725TWDJPWJ7F',
-                                         aws_secret_access_key='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',
                                          )
             self.storage_dir = TemporaryDirectory()
             self.writer = tf.python_io.TFRecordWriter(os.path.join(self.storage_dir.name, 'temp.tfrecord'))

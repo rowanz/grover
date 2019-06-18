@@ -162,7 +162,11 @@ def get_encoder():
 def _tokenize_article_pieces(encoder, item):
     """
     Turn the article into tokens
+    NOTE: in hindsight I kinda messed up here because the first token is always represented as a BPE continuation
+    rather than an initial token in its own right. whoops....
+
     :param item: Contains things that need to be tokenized
+
 
     fields are ['domain', 'date', 'authors', 'title', 'article', 'summary']
     :return: dict

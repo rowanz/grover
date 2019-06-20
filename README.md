@@ -14,6 +14,7 @@ We are releasing the following:
 * Code for the Grover discriminator in [discrimination/](discrimination/). Without much changing, you can run Grover as a discriminator to detect Neural Fake News.
 * Code for generating from a Grover model, in [sample/](sample/).
 * Code for making your own RealNews dataset in [realnews/](realnews/).
+* Model checkpoints freely available online for the Grover-Base and Grover-Large models. For Grover-Mega or the RealNews dataset, please [submit this form](https://docs.google.com/forms/d/1LMAUeUtHNPXO9koyAIlDpvyKsLSYlrBj3rYhC30a7Ak) and we will get back to you as soon as possible.
 
 Scroll down 👇 for some easy-to-use instructions for setting up Grover to generate news articles.
 

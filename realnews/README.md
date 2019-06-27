@@ -9,7 +9,7 @@ Setup:
 
 Now, let's get started:
 * Use any of the ids in cc_files (like the last one, `CC-MAIN-2019-13` which is for March 2019).
-* Then run `crawl.sh CC-MAIN-2019-13`, and this will crawl that in parallel using all of your CPUs. You will probably need to change the arguments in `process_ccrawl.py` so it goes to your bucket.
+* Then run `process_ccrawl.sh CC-MAIN-2019-13`, and this will crawl that in parallel using all of your CPUs. You will probably need to change the arguments in `process_ccrawl.py` so it goes to your bucket.
 * Do this a lot, and now you probably need to deduplicate, so use `dedupe_crawl.py`. This can be done on 1 CPU.
 * Last, you'll want to convert everything to tfrecords and move them to Google Cloud. You also probably want to do this in parallel. This can be done using `prepare_lm_data.sh`
 

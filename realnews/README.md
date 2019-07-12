@@ -1,3 +1,7 @@
+# Downloading the existing RealNews dataset
+
+A tiny version is available for debugging purposes (`realnews_tiny.jsonl`). You can download the full version, just please [submit this form](https://docs.google.com/forms/d/1LMAUeUtHNPXO9koyAIlDpvyKsLSYlrBj3rYhC30a7Ak).
+
 # Code for scraping the realnews dataset
 
 You probably don't want to create your own realnews dataset. But for reproducibility purposes here's what I did:

@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser(description='Download a model!')
 parser.add_argument(
     'model_type',
     type=str,
-    help='Valid model names: (base|large)',
+    help='Valid model names: (base|large|mega)',
 )
 model_type = parser.parse_args().model_type
 

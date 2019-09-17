@@ -1,4 +1,6 @@
 # Grover
+##### UPDATE, Sept 17 2019. We got into NeurIPS (camera ready coming soon!) and we've made Grover-Mega publicly available without you needing to fill out the form. You can download it using [download_model.py](download_model.py).
+
 (aka, code for [Defending Against Neural Fake News](https://arxiv.org/abs/1905.12616))
 
 Grover is a model for Neural Fake News -- both generation and detection. However, it probably can also be used for other generation tasks. 
@@ -14,7 +16,7 @@ We are releasing the following:
 * Code for the Grover discriminator in [discrimination/](discrimination/). Without much changing, you can run Grover as a discriminator to detect Neural Fake News.
 * Code for generating from a Grover model, in [sample/](sample/).
 * Code for making your own RealNews dataset in [realnews/](realnews/).
-* Model checkpoints freely available online for the Grover-Base and Grover-Large models. For Grover-Mega or the RealNews dataset, please [submit this form](https://docs.google.com/forms/d/1LMAUeUtHNPXO9koyAIlDpvyKsLSYlrBj3rYhC30a7Ak) and we will get back to you as soon as possible.
+* Model checkpoints freely available online for *all* of the Grover models. For using the RealNews dataset for research, please [submit this form](https://docs.google.com/forms/d/1LMAUeUtHNPXO9koyAIlDpvyKsLSYlrBj3rYhC30a7Ak) and message me on [contact me on Twitter](https://twitter.com/rown) or [through email](https://scr.im/rowan). You will need to use a valid account that has google cloud enabled, otherwise, I won't be able to give you access 😢
 
 Scroll down 👇 for some easy-to-use instructions for setting up Grover to generate news articles.
 
@@ -52,6 +54,9 @@ Misc notes/tips:
 
 Congrats! You can view the generations, conditioned on the domain/headline/date/authors, in `april2019_set_mini_out.jsonl`.
 
+## FAQ: What's the deal with the release of Grover?
+
+Our core position is that [it is important to release possibly-dangerous models to researchers](https://thegradient.pub/why-we-released-grover/). At the same time, we believe Grover-Mega isn't particularly useful to anyone who isn't doing research in this area, particularly as [we have an online web demo available](https://https://grover.allenai.org/) and the model is computationally expensive. We previously were a bit stricter and limited initial use of Grover-Mega to researchers. Now that several months have passed since we put the paper on arxiv, and since several other large-scale language models have been publicly released, we figured that there is little harm in fully releasing Grover-Mega.
 
 ### Bibtex
 
@@ -59,7 +64,7 @@ Congrats! You can view the generations, conditioned on the domain/headline/date/
 @inproceedings{zellers2019grover,
     title={Defending Against Neural Fake News},
     author={Zellers, Rowan and Holtzman, Ari and Rashkin, Hannah and Bisk, Yonatan and Farhadi, Ali and Roesner, Franziska and Choi, Yejin},
-    journal={arXiv preprint arXiv:1905.12616},
+    booktitle={Advances in Neural Information Processing Systems 32},
     year={2019}
 }
 ```

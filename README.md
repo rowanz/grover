@@ -56,7 +56,7 @@ Congrats! You can view the generations, conditioned on the domain/headline/date/
 
 ## FAQ: What's the deal with the release of Grover?
 
-Our core position is that [it is important to release possibly-dangerous models to researchers](https://thegradient.pub/why-we-released-grover/). At the same time, we believe Grover-Mega isn't particularly useful to anyone who isn't doing research in this area, particularly as [we have an online web demo available](https://https://grover.allenai.org/) and the model is computationally expensive. We previously were a bit stricter and limited initial use of Grover-Mega to researchers. Now that several months have passed since we put the paper on arxiv, and since several other large-scale language models have been publicly released, we figured that there is little harm in fully releasing Grover-Mega.
+Our core position is that [it is important to release possibly-dangerous models to researchers](https://thegradient.pub/why-we-released-grover/). At the same time, we believe Grover-Mega isn't particularly useful to anyone who isn't doing research in this area, particularly as [we have an online web demo available](https://grover.allenai.org/) and the model is computationally expensive. We previously were a bit stricter and limited initial use of Grover-Mega to researchers. Now that several months have passed since we put the paper on arxiv, and since several other large-scale language models have been publicly released, we figured that there is little harm in fully releasing Grover-Mega.
 
 ### Bibtex
 

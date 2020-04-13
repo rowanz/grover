@@ -1,3 +1,5 @@
+# This is just for downloading the generator. See `discrimination/` for the discrimination checkpoints
+
 import os
 import requests
 import argparse

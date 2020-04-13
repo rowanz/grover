@@ -31,6 +31,8 @@ There are a few ways you can run Grover:
 * **Discrimination mode (training)**. This requires a TPU pod.
 * **Discrimination mode (inference)**. This could be run on a GPU or a TPU, but I've only tested this with TPU inference.
 
+**NOTE**: You might be able to get things to work using different hardware. However, it might be a lot of work engineering wise and I don't recommend it if possible. Please don't contact me with requests like this, as there's not much help I can give you.
+
 I used Python3.6 for everything. Usually I set it up using the following commands:
 ```
 curl -o ~/miniconda.sh -O  https://repo.continuum.io/miniconda/Miniconda3-4.5.4-Linux-x86_64.sh  && \

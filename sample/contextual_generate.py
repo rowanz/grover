@@ -80,7 +80,6 @@ parser.add_argument(
     help='p to use for top p sampling. if this isn\'t none, use this for everthing'
 )
 
-
 args = parser.parse_args()
 
 encoder = get_encoder()
@@ -124,6 +123,13 @@ with tf.Session(config=tf_config, graph=tf.Graph()) as sess, \
         for key in ['domain', 'date', 'authors', 'title', 'article']:
             if key != args.target:
                 context_formatted.extend(article_pieces.pop(key, []))
+
+        if len(context_formatted) >= 1020:
+            print(
+                "WARNING: the provided context is {} tokens, but the maximum length Grover was trained on was 1024 tokens.".format(
+                    len(context_formatted)), flush=True)
+            context_formatted = context_formatted[:1020]
+
         context_formatted.append(encoder.__dict__['begin_{}'.format(args.target)])
         # Format context end
 

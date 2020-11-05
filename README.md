@@ -50,7 +50,7 @@ Misc notes/tips:
 
 ## Quickstart: setting up Grover for generation!
 
-1. Set up your environment. Here's the easy way, assuming anaconda is installed: `conda create -y -n grover python=3.6 && source activate grover && pip install -r requirements-gpu.txt`
+1. Set up your environment. Here's the easy way, assuming anaconda is installed: `conda create -y -n grover python=3.6 && source activate grover && conda install cudatoolkit=10.0 cudnn && pip install -r requirements-gpu.txt`
 2. Download the model using `python download_model.py base`
 3. Now generate: `PYTHONPATH=$(pwd) python sample/contextual_generate.py -model_config_fn lm/configs/base.json -model_ckpt models/base/model.ckpt -metadata_fn sample/april2019_set_mini.jsonl -out_fn april2019_set_mini_out.jsonl`
 

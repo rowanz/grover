@@ -11,16 +11,18 @@ Here are links to the discrimination checkpoints. You'll need to use google clou
 
 In other words, if you want to mimic my experimental setup, but with your own generator, you'd also need to train your own discriminator from scratch. Alternatively, if you want a really good discriminator against my checkpoints for whatever reason, you'd also probably want to train your own discriminator from scratch.
 
-Medium trained on medium, top-p=0.96:
+Medium trained on medium (355M parameters), top-p=0.96:
 ```
 gs://grover-models/discrimination/generator=medium~discriminator=grover~discsize=medium~dataset=p=0.96/model.ckpt-1562.data-00000-of-00001
 gs://grover-models/discrimination/generator=medium~discriminator=grover~discsize=medium~dataset=p=0.96/model.ckpt-1562.index
 gs://grover-models/discrimination/generator=medium~discriminator=grover~discsize=medium~dataset=p=0.96/model.ckpt-1562.meta
+gs://grover-models/discrimination/generator=medium~discriminator=grover~discsize=medium~dataset=p=0.96/checkpoint
 ```
 
-Mega trained on mega, top-p=0.94:
+Mega trained on mega (1.5B parameters), top-p=0.94:
 ```
 gs://grover-models/discrimination/generator=mega~discriminator=grover~discsize=mega~dataset=p=0.94/model.ckpt-1562.data-00000-of-00001
 gs://grover-models/discrimination/generator=mega~discriminator=grover~discsize=mega~dataset=p=0.94/model.ckpt-1562.index
 gs://grover-models/discrimination/generator=mega~discriminator=grover~discsize=mega~dataset=p=0.94/model.ckpt-1562.meta
+gs://grover-models/discrimination/generator=mega~discriminator=grover~discsize=mega~dataset=p=0.94/checkpoint
 ```

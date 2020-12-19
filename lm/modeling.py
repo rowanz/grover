@@ -84,7 +84,7 @@ class GroverConfig(object):
     @classmethod
     def from_json_file(cls, json_file):
         """Constructs a `NewsConfig` from a json file of parameters."""
-        with tf.gfile.GFile(json_file, "r") as reader:
+        with tf.io.gfile.GFile(json_file, "r") as reader:
             text = reader.read()
         return cls.from_dict(json.loads(text))
 

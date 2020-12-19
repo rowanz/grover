@@ -354,7 +354,7 @@ def _top_p_sample(logits, ignore_ids=None, num_samples=1, p=0.9):
 
     # TODO FIGURE OUT HOW TO DO THIS ON TPUS. IT'S HELLA SLOW RIGHT NOW, DUE TO ARGSORT I THINK
     """
-    with tf.variable_scope('top_p_sample'):
+    with tf.compat.v1.variable_scope('top_p_sample'):
         batch_size, vocab_size = get_shape_list(logits, expected_rank=2)
 
         probs = tf.nn.softmax(logits if ignore_ids is None else logits - tf.cast(ignore_ids[None], tf.float32) * 1e10,

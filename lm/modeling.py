@@ -18,7 +18,9 @@ import json
 import math
 
 import six
-import tensorflow as tf
+#import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from lm import optimization_adafactor
 from lm.utils import get_assignment_map_from_checkpoint, get_shape_list, get_attention_mask, gelu, layer_norm, dropout, \
@@ -354,7 +356,7 @@ def _top_p_sample(logits, ignore_ids=None, num_samples=1, p=0.9):
 
     # TODO FIGURE OUT HOW TO DO THIS ON TPUS. IT'S HELLA SLOW RIGHT NOW, DUE TO ARGSORT I THINK
     """
-    with tf.compat.v1.variable_scope('top_p_sample'):
+    with tf.variable_scope('top_p_sample'):
         batch_size, vocab_size = get_shape_list(logits, expected_rank=2)
 
         probs = tf.nn.softmax(logits if ignore_ids is None else logits - tf.cast(ignore_ids[None], tf.float32) * 1e10,
@@ -408,7 +410,7 @@ def _top_k_sample(logits, ignore_ids=None, num_samples=1, k=10):
 
     # TODO FIGURE OUT HOW TO DO THIS ON TPUS. IT'S HELLA SLOW RIGHT NOW, DUE TO ARGSORT I THINK
     """
-    with tf.compat.v1.variable_scope('top_p_sample'):
+    with tf.variable_scope('top_p_sample'):
         batch_size, vocab_size = get_shape_list(logits, expected_rank=2)
 
         probs = tf.nn.softmax(logits if ignore_ids is None else logits - tf.cast(ignore_ids[None], tf.float32) * 1e10,
@@ -487,8 +489,8 @@ class GroverModel(object):
             assert features_ == (config.hidden_size // config.num_attention_heads)
             caches = tf.unstack(cache, axis=1)
 
-        with tf.compat.v1.variable_scope(scope, default_name='newslm', reuse=reuse):
-            with tf.compat.v1.variable_scope("embeddings"):
+        with tf.variable_scope(scope, default_name='newslm', reuse=reuse):
+            with tf.variable_scope("embeddings"):
                 embeddings, self.embedding_table = embed(self.input_ids, config.vocab_size,
                                                          config.hidden_size,
                                                          position_offset=self.cache_length,
@@ -505,7 +507,7 @@ class GroverModel(object):
             hidden_state = tf.reshape(embeddings, [self.batch_size * self.seq_length, self.config.hidden_size])
             new_kvs = []
             for layer_idx, layer_cache in enumerate(caches):
-                with tf.compat.v1.variable_scope('layer{:02d}'.format(layer_idx)):
+                with tf.variable_scope('layer{:02d}'.format(layer_idx)):
                     # [batch_size * seq_length, hidden_size]
                     attention_output, new_kv = attention_layer(
                         hidden_state,
@@ -722,7 +724,7 @@ def sample_step(tokens, ignore_ids, news_config, batch_size=1, p_for_topp=0.95, 
         config=news_config,
         is_training=False,
         input_ids=tokens,
-        reuse=tf.compat.v1.AUTO_REUSE,
+        reuse=tf.AUTO_REUSE,
         scope='newslm',
         chop_off_last_token=False,
         do_cache=True,
@@ -845,7 +847,7 @@ def classification_model_fn_builder(config: GroverConfig, init_checkpoint, learn
             chop_off_last_token=False,
         )
 
-        with tf.compat.v1.variable_scope('classification'):
+        with tf.variable_scope('classification'):
             hidden_state = model.pooled_output(pool_token_id)
             if is_training:
                 hidden_state = dropout(hidden_state, dropout_prob=0.1)

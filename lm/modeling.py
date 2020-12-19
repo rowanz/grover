@@ -408,7 +408,7 @@ def _top_k_sample(logits, ignore_ids=None, num_samples=1, k=10):
 
     # TODO FIGURE OUT HOW TO DO THIS ON TPUS. IT'S HELLA SLOW RIGHT NOW, DUE TO ARGSORT I THINK
     """
-    with tf.variable_scope('top_p_sample'):
+    with tf.compat.v1.variable_scope('top_p_sample'):
         batch_size, vocab_size = get_shape_list(logits, expected_rank=2)
 
         probs = tf.nn.softmax(logits if ignore_ids is None else logits - tf.cast(ignore_ids[None], tf.float32) * 1e10,
@@ -487,8 +487,8 @@ class GroverModel(object):
             assert features_ == (config.hidden_size // config.num_attention_heads)
             caches = tf.unstack(cache, axis=1)
 
-        with tf.variable_scope(scope, default_name='newslm', reuse=reuse):
-            with tf.variable_scope("embeddings"):
+        with tf.compat.v1.variable_scope(scope, default_name='newslm', reuse=reuse):
+            with tf.compat.v1.variable_scope("embeddings"):
                 embeddings, self.embedding_table = embed(self.input_ids, config.vocab_size,
                                                          config.hidden_size,
                                                          position_offset=self.cache_length,
@@ -505,7 +505,7 @@ class GroverModel(object):
             hidden_state = tf.reshape(embeddings, [self.batch_size * self.seq_length, self.config.hidden_size])
             new_kvs = []
             for layer_idx, layer_cache in enumerate(caches):
-                with tf.variable_scope('layer{:02d}'.format(layer_idx)):
+                with tf.compat.v1.variable_scope('layer{:02d}'.format(layer_idx)):
                     # [batch_size * seq_length, hidden_size]
                     attention_output, new_kv = attention_layer(
                         hidden_state,
@@ -845,7 +845,7 @@ def classification_model_fn_builder(config: GroverConfig, init_checkpoint, learn
             chop_off_last_token=False,
         )
 
-        with tf.variable_scope('classification'):
+        with tf.compat.v1.variable_scope('classification'):
             hidden_state = model.pooled_output(pool_token_id)
             if is_training:
                 hidden_state = dropout(hidden_state, dropout_prob=0.1)

@@ -6,4 +6,4 @@ tensorboard==1.13.1
 tensorflow==1.13.1
 tensorflow-estimator==1.13.0
 tqdm==4.31.1
-requests==2.22.0
+requests==2.31.0
